@@ -10,7 +10,6 @@
 :root {
     color-scheme: light dark;
 
-    /* Light Mode */
     --bg-gradient-start: #e8f0fe;
     --bg-gradient-end: #ffffff;
     --text-color: #333;
@@ -23,7 +22,6 @@
     --shadow-strong: rgba(0,0,0,0.2);
 }
 
-/* Dark Mode automático */
 @media (prefers-color-scheme: dark) {
     :root {
         --bg-gradient-start: #0f172a;
@@ -74,7 +72,7 @@ header {
 }
 
 .logo-container:hover {
-    transform: scale(1.15);
+    transform: scale(1.1);
 }
 
 header img {
@@ -91,13 +89,6 @@ header h1 {
 }
 
 /* ========================
-   Botão Hamburger (REMOVIDO)
-======================== */
-.menu-toggle {
-    display: none;
-}
-
-/* ========================
    Navegação
 ======================== */
 nav {
@@ -107,8 +98,6 @@ nav {
     flex-wrap: wrap;
     box-shadow: 0 4px 10px var(--shadow-light);
     border-radius: 0 0 12px 12px;
-    transition: all 0.3s ease;
-    z-index: 5;
 }
 
 nav a {
@@ -116,8 +105,7 @@ nav a {
     color: #fff;
     text-decoration: none;
     font-weight: 600;
-    font-size: 1rem;
-    transition: all 0.3s ease;
+    transition: 0.3s;
     position: relative;
 }
 
@@ -136,14 +124,12 @@ nav a:hover::after {
     width: 100%;
 }
 
-nav a:hover,
-nav a:focus {
+nav a:hover {
     background-color: var(--nav-hover);
-    outline: none;
 }
 
 /* ========================
-   Carrossel
+   Carrossel CORRIGIDO
 ======================== */
 .carousel {
     width: 100%;
@@ -158,24 +144,19 @@ nav a:focus {
 .slides {
     display: flex;
     width: max-content;
-    animation: scroll 25s linear infinite;
+    animation: scroll 30s linear infinite;
 }
 
 .slides img {
-    flex: 0 0 33.3333%;
+    flex: 0 0 100%;
     height: 400px;
     object-fit: cover;
-    user-select: none;
-    transition: transform 0.5s ease;
 }
 
-.slides img:hover {
-    transform: scale(1.05);
-}
-
+/* Percorre toda a largura do conjunto */
 @keyframes scroll {
     0% { transform: translateX(0); }
-    100% { transform: translateX(-33.3333%); }
+    100% { transform: translateX(-100%); }
 }
 
 /* ========================
@@ -211,7 +192,6 @@ main {
 
 .card p {
     padding: 1rem 1.2rem;
-    font-size: 1.05rem;
 }
 
 .botao {
@@ -223,7 +203,7 @@ main {
     border-radius: 10px;
     font-weight: 700;
     text-decoration: none;
-    transition: all 0.3s ease;
+    transition: 0.3s;
 }
 
 .botao:hover {
@@ -244,36 +224,6 @@ footer {
     padding: 20px 40px;
     text-align: center;
     box-shadow: inset 0 0 80px rgba(0, 128, 54, 0.75);
-    position: relative;
-    z-index: 10;
-    transition: all 0.3s ease;
-}
-
-footer,
-footer p,
-footer span,
-footer a,
-footer small,
-footer div {
-    color: #ffffff;
-}
-
-/* ========================
-   Animações
-======================== */
-@keyframes fadeInGrow {
-    0% { transform: scale(0.8); opacity: 0; }
-    100% { transform: scale(1); opacity: 1; }
-}
-
-/* ========================
-   Melhorias Touch
-======================== */
-@media (hover: none) {
-    .card:hover {
-        transform: none;
-        box-shadow: 0 6px 20px var(--shadow-light);
-    }
 }
 
 /* ========================
@@ -281,7 +231,7 @@ footer div {
 ======================== */
 @media (max-width: 1024px) {
     .carousel { height: 300px; }
-    .slides img { height: 300px; flex: 0 0 50%; }
+    .slides img { height: 300px; }
     header img { height: 75px; }
 }
 
@@ -306,7 +256,6 @@ footer div {
     main {
         padding: 2rem 1rem;
         grid-template-columns: 1fr;
-        gap: 2rem;
     }
 
     .carousel {
@@ -315,10 +264,17 @@ footer div {
 
     .slides img {
         height: 220px;
-        flex: 0 0 100%;
     }
 
     header img {
         height: 65px;
     }
+}
+
+/* ========================
+   Animações
+======================== */
+@keyframes fadeInGrow {
+    0% { transform: scale(0.8); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
 }
